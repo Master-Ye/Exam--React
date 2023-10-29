@@ -1,57 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
-
+import "./App.sass";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "@/page/login";
+import Layout from "./common_components/layout";
+import { routerData } from "./config";
+import AdminManager from "@/page/admin_manage";
+import ExamCorrect from "@/page/correct_exam";
+import ReadExam from "@/page/read_exam";
+import ExamSelect from "@/page/exam_select";
+import Exam from "@/page/exam";
+import SubjectAdd from "@/page/subject_add";
+import SubjectManage from "@/page/subject_manage";
+import StudentManage from "@/page/student_manage";
+import PersonInfo from "@/page/person_info";
+import CorrectExam from "@/page/correct_exam";
+import ExamHistory from "@/page/exam_history";
+import CorrectExamList from "@/page/correct_exam_list";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Navigate to={"/login"} />} />
+        <Route path={routerData.login.path} element={<Login />} />
+        <Route path={routerData.admin_manage.path} element={<AdminManager />} />
+        <Route path={routerData.correct_exam.path} element={<ExamCorrect />} />
+        <Route path={routerData.read_exam.path} element={<ReadExam />} />
+        <Route path={routerData.exam.path} element={<Exam />} />
+        <Route path={routerData.subject_add.path} element={<SubjectAdd />} />
+        <Route
+          path={routerData.subject_manage.path}
+          element={<SubjectManage />}
+        />
+        <Route path={routerData.person_info.path} element={<PersonInfo />} />
+        <Route
+          path={routerData.student_manage.path}
+          element={<StudentManage />}
+        />
+        <Route path={routerData.exam_history.path} element={<ExamHistory />} />
+        <Route path={routerData.correct_exam.path} element={<CorrectExam />} />
+        <Route
+          path={routerData.correct_exam_list.path}
+          element={<CorrectExamList />}
+        />
+        <Route path={routerData.exam_select.path} element={<ExamSelect />} />
+      </Route>
+    </Routes>
   );
 }
 
