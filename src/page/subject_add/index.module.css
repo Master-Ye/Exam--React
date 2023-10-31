@@ -1,0 +1,42 @@
+.wrap {
+    height: calc(100vh - 150px);
+    background-color: pink;
+    display: flex;
+}
+
+.top {
+    height: 50px;
+    background-color: #ccc;
+    display: flex;
+}
+
+.top_left {
+    line-height: 50px;
+    padding-left: 30px;
+    border-left: 5px solid blue;
+}
+
+.top {
+    background-color: yellow;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.right {
+    background-color: blueviolet;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.add_button {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.content {
+    display: flex;
+    height: calc(100vh - 200px);
+    background-color: pink;
+}

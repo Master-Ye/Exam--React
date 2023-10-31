@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import { AppstoreOutlined, MailOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
+import { RouterKeys, routerData, superAdminMenus } from "@/config";
+import { useNavigate } from "react-router-dom";
+import usePathKey from "@/hooks/usePathKey";
 
 const items: MenuProps["items"] = [
   {
@@ -17,67 +16,31 @@ const items: MenuProps["items"] = [
     label: "Navigation Two",
     key: "app",
     icon: <AppstoreOutlined />,
-    disabled: true,
-  },
-  {
-    label: "Navigation Three - Submenu",
-    key: "SubMenu",
-    icon: <SettingOutlined />,
-    children: [
-      {
-        type: "group",
-        label: "Item 1",
-        children: [
-          {
-            label: "Option 1",
-            key: "setting:1",
-          },
-          {
-            label: "Option 2",
-            key: "setting:2",
-          },
-        ],
-      },
-      {
-        type: "group",
-        label: "Item 2",
-        children: [
-          {
-            label: "Option 3",
-            key: "setting:3",
-          },
-          {
-            label: "Option 4",
-            key: "setting:4",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    label: (
-      <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-        Navigation Four - Link
-      </a>
-    ),
-    key: "alipay",
   },
 ];
 
 const App: React.FC = () => {
-  const [current, setCurrent] = useState("mail");
-
+  const path_key = usePathKey();
+  const Navigate = useNavigate();
+  const [current, setCurrent] = useState("");
+  const menus = superAdminMenus;
   const onClick: MenuProps["onClick"] = (e) => {
     console.log("click ", e);
-    setCurrent(e.key);
+    Navigate(routerData[e.key as RouterKeys].path);
   };
+  useEffect(() => {
+    if (path_key) {
+      console.log(path_key);
+      setCurrent(path_key);
+    }
+  }, [path_key]);
 
   return (
     <Menu
       onClick={onClick}
       selectedKeys={[current]}
       mode="horizontal"
-      items={items}
+      items={menus}
     />
   );
 };
