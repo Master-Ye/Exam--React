@@ -1,13 +1,15 @@
 .wrap {
     height: calc(100vh - 150px);
-    background-color: pink;
+
     display: flex;
+flex-direction: column;
 }
 
 .top {
     height: 50px;
     background-color: #ccc;
     display: flex;
+
 }
 
 .top_left {
@@ -15,13 +17,14 @@
     padding-left: 30px;
     border-left: 5px solid blue;
 }
-
-.top {
-    background-color: yellow;
-    padding: 20px;
-    flex: 1;
-    overflow-y: auto;
+.top_right {
+    line-height: 50px;
+    padding-left: 30px;
+    display: flex;
+    margin-top: 10px;
 }
+
+
 
 .right {
     background-color: blueviolet;
@@ -31,7 +34,7 @@
 }
 
 .add_button {
-    margin-top: 10px;
+
     margin-left: 20px;
 }
 
@@ -39,4 +42,10 @@
     display: flex;
     height: calc(100vh - 200px);
     background-color: pink;
+}
+.left{
+    background-color: yellow;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
 }
