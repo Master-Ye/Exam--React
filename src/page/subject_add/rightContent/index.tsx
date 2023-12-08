@@ -31,6 +31,7 @@ export default function RightContent() {
 
     }
     await axios.post("/api/topic",formData)
+    form.resetFields()
   }
   return (
     <Form
